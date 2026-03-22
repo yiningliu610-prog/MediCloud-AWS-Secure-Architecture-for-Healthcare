@@ -13,9 +13,21 @@ export function navigate(path) {
 export async function initRouter(container) {
   appElement = container;
 
+  function getSafeRoute(hash) {
+    let fn = null;
+
+    if (Object.prototype.hasOwnProperty.call(routes, hash) && typeof routes[hash] === 'function') {
+      fn = routes[hash];
+    } else if (Object.prototype.hasOwnProperty.call(routes, '/') && typeof routes['/'] === 'function') {
+      fn = routes['/'];
+    }
+
+    return fn;
+  }
+
   async function handleRoute() {
     const hash = window.location.hash.slice(1) || '/';
-    const renderFn = routes[hash] || routes['/'];
+    const renderFn = getSafeRoute(hash);
     if (!renderFn) return;
 
     // Page exit transition
@@ -41,7 +53,7 @@ export async function initRouter(container) {
   window.addEventListener('hashchange', handleRoute);
   // Initial render without exit animation
   const hash = window.location.hash.slice(1) || '/';
-  const renderFn = routes[hash] || routes['/'];
+  const renderFn = getSafeRoute(hash);
   if (renderFn) {
     currentCleanup = await renderFn(appElement);
   }
