@@ -217,9 +217,6 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
     <!-- Architecture Diagrams -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 animate-on-scroll">
       <h2 class="text-2xl font-bold mb-8 text-center">Architecture Diagrams</h2>
-      <div class="flex gap-2 mb-6 justify-center flex-wrap" id="diagram-tabs">
-        <button class="diagram-tab active px-4 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white transition-all" data-img="/images/overall-architecture.jpg">Overall</button>
-      </div>
       <div class="bg-slate-800/50 rounded-2xl border border-slate-700/50 p-4 overflow-hidden">
         <img id="diagram-display" src="/images/overall-architecture.jpg" alt="Architecture diagram" class="w-full rounded-xl max-h-[500px] object-contain transition-opacity duration-300"/>
       </div>
